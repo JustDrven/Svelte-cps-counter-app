@@ -1,15 +1,26 @@
 <script>
 	let CPSNumber = 0;
 	let amount = 10;
+	let showIng = false;
 
 	let clicking = true;
+
+	$: if(CPSNumber == amount) {
+		clicking = false;
+		showIng = true;
+	} else {
+		clicking = true;
+		showIng = false;
+	}
+
 </script>
 
 <body>
 	<div class="mainer">
 	<header>
-		{#if CPSNumber == amount} 
-			
+
+		{#if showIng == true}
+			<h1><strong>The End</strong></h1>
 		{/if}
 
 		{#if clicking == true}
@@ -59,11 +70,13 @@
 	}
 
 	.mainer {
-		margin: 5em 8em;
+		margin: 10rem auto;
 		background: white;
 		border-radius: 25px;
 		padding: 1.5em;
+		width: clamp(18rem, 42vw, 42rem);
 	}
+
 
 	strong {
 		color: rgb(230, 83, 83);
